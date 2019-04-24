@@ -4,7 +4,7 @@
         <meta charset="utf-8"> 
         <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
 
-        <title>Example Student's HCDE 439 Physical Computing Page!</title> 
+        <title>Assignment 2: CAD-made Press Fit Construct Kit(s)</title> 
 
         <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
 
@@ -12,13 +12,50 @@
     <body> 
 
         <div class="header">
-            <h1>Example Student's Assignment 2!</h1>
+            <h1>Michael Hsieh's Assignment 2!</h1>
             <p>
-            <img src="red-panda.jpg" width=400></a>
+            <img src="ass02_01.jpg" width=400></a>
             </p>
             <p>
-            Here is all the documentation for assignment 2!
+			For this assignment, we were asked to create a press fit construction kit where the part geometry was created using a CAD software, specifically Rhino/Grasshopper. Additionally, the assignment required that the construction kit could be made from a material with at least 2 different thicknesses. Source files can be located <a href="https://github.com/mahsieh/hcde598e/tree/master/Assignment_SourceFiles/Assignment%202">within the github repository</a>. 
             </p>
+			The general steps that I took in this assignment were:
+			<ol>
+				<li>Create Grasshopper files for geometry</li>
+				<li>Measure thicknesses of material</li>
+				<li>Create Rhino 3dm files/vector graphic files</li>
+				<li>Use laser cutter to cut out parts from the cardboard sheet.</li>
+				<li>Assemble parts into some kind of design that would not shake apart easily.</li>
+			</ol>
+		<h3>Grasshopper Files</h3>
+			<p>I already had regular polygons from the previous assignment which I planned on re-using as shapes. In order to minimize the amount of work that I had to perform manually in Rhino, I set out to create all of the geoemtry using Grasshoper. The steps for the pentagons and hexagons was essentially the same:
+			<ol>
+				<li>Create n-sided polygon, with a number slider to adjust radius. Also rotate the polygon if necessary to ease calculations for later steps.</li>
+				<li>Create rectangular slots with adjustable thickness (which would be measured later) and depth (which could be set arbitrarily).</li>
+				<li>Align the center of the rectangle to the midpoint of the polygon's side, such that it is flush with the edge.</li>
+				<li>Create a polar array of the rectangular slots, then use a region difference to cut the slots out and join the geometry.</li>
+				<li>Apply fillets to unified geometry to ease press fitting later.</li>
+				<li>Move completed geometry to the upper left corner of working space before creating a rectangular array to print out many pieces at a time.</li>
+				<li>Generate a standardized geometry (rectangle) to scale against when bringing the .svg/.dxf into Illustrator.</li>
+			
+			</p>
+			<img src="ass02_02.png">
+			<h3>Measuring Thickness</h3>
+			<p>I obtained two different cardboard pieces and measured their thicknesses to be ~3.6mm and ~2.25mm. I decided to use the 3.6mm material with the pentagons and the 2.25mm material with the hexagons. I used the sliders in the grasshopper files to input these thickness values.
+			</p>
+			<h3>Creating a Vector Representation of the Part Design</h3>
+			<p>I used Grasshoper to bake the geometries that I had parametrically defined. After these geometries were displayed in Rhino, I saved the .3dm files that were generated. I also exported the completed geometries as .svgs and .dxfs to work with in Illustrator. The rectangle that I created for scaling was very helpful in resizing the geometry accurately within Illustrator, since the file opened up more than 32x larger than I expected. Even locking the proportions, Illustrator wasn't able to resize the entire drawing in one go, so I had to do multiple resizes, with unlocked proportions, but was able to resize the match my drawings thanks to the rectangle's known size. I set the vector stroke widths to 0.001in to ensure vector cuts using the Epilog printer.
+			</p>
+			<img src="ass02_03.png">		
+			<h3>Using a Laser Cutter to Cut Parts</h3>
+			<p>Similar to the previous assignment, I checked out one of their laptops, along with a dongle so that the Epilog laser cutter could be connected to the laptop. I transferred my files to the laptop and opened them up in Illustrator, set the artboard size to match the laser cutter work area, performed the aforementioned size modification, and shifted the parts into a printable area. I then turned on the cutter, the exhaust, and the air assist to ensure that there would be no malfunctions with the printer. After the printer turned on, I adjusted the work area with my cardboard resting on it so that the laser head was focused, using a triangular tool to rest directly upon the cardboard. On the laptop, I entered the print dialog, selected the appropriate laser cutter from the possible printers, and entered its preferences, where I set the speed to 25%, power to 100%, and frequency to 100%. I also set the piece size to match the printer work area. At this point I lifted the hood of the laser cutter, and hit the print button twice on the laptop to send the job to the laser cutter. I ran the cutter with the hood up to see that the cuts were where I intended them to but, then cancelled the job and sent the commands through the laptop again, before lowering the hood and running the actual print job. After completing the cuts, I turned off the laser cutter and the air assist/exhaust and returned the laptop to the MILL staff.
+			</p>
+			<p>I first tried to print using the exported .svgs, but the printer kept trying to rasterize the vectors. I switched to the .dxfs and didn't have any issues. I did notice that the time it took for these construction kits was longer than the previous assignment, likely because I chose to use fillets instead of chamfers (for simplicity in Grasshopper). I ran the construction kits sequentially, but my second cut was slightly out of focus, because the material was thicker. I adjusted the focus of the printer and ran the print job again and the pieces came out just fine.
+			</p>
+			<h3>Part Assembly</h3>
+			<p>Since the two construction kits had different thicknesses, they could not be attached to one another. Knowing what I knew about their angles and connections from the previous assignment, I knew it would be no issue to connect the regular polygonal construction kits in a repeating pattern to assemble a kit that would not shake apart easily. Although I cut fewer pieces than the previous assignment, I was still able to assemble some nicely symmetrical shapes using all of the pieces..
+			</p>
+			<img src="ass02_04.jpg" width=1000><br><img src="ass02_05.jpg" width=800>
         </div>
         
     </body>
