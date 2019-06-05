@@ -4,7 +4,7 @@
         <meta charset="utf-8"> 
         <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
 
-        <title>Assignment 0: Nameplate</title> 
+        <title>Final Project</title> 
 
         <link href="style.css" media="screen" rel="stylesheet" type="text/css" />
 
@@ -12,22 +12,102 @@
     <body> 
 
         <div class="header">
-            <h1>Michael Hsieh's Assignment 0!</h1>
+            <h1>Michael Hsieh's Final Project</h1>
             <p>
-            <img src="ass00_01.jpg" width=400></a>
+            <img src="ass08_01.jpg" width=600></a>
             </p>
             <p>
-            For the 0th assignment in the class, we were required to create a nameplate for the instructors to view, as well as publishing our github page from the repository. I was able to complete this assignment on my own, other than reading some github documentation and watching a short in-class demonstration.	
-            </p>
-			<p>
-			Construction of the nameplate was relatively straightforward. I tore a sheet of paper out of my sketchbook/notepad and folded it in half, parallel to its longest edge. I chose one of the outside faces that was created by this fold as the side which I would display towards the instructors and then wrote my first name using a mechanical pencil. I made sure that the letters were clear and large enough to read from a distance. If I were to do this over again, I might consider using a pen or sharpie instead, as well as adding additional flourish to the nameplate.
+            For the Final Project in the class, we were asked to fabricate an object of our choosing using at least four of the techniques that we had learned during the course. I chose to create a <a href="https://en.wikipedia.org/wiki/Sliding_puzzle?oldformat=true">sliding puzzle</a> (i.e., a <a href="https://en.wikipedia.org/wiki/15_puzzle?oldformat=true">fifteen puzzle</a>)which requires formation of a pattern that required moving mechanisms (gears) to be properly aligned for the puzzle to be completed. The idea originally came from the game Cogs, a puzzle game involving moving mechanisms in a "Steampunk" style. 
 			</p>
 			<p>
-			I have not previously worked with github in the past, so I listened attentively during Nadya's in-class demonstration of the tool. After creating my repository, I read through tutorials on how to publish the repository as a page. Though I originally went through command line to perform my git commands, I discovered that the installation of git also included a gui, which is able to perform the same commands without typing everything. I have since started using the GUI for all work that needs to be added to my repository.
+			<img src="ass07_02.jpg" width=400></a>
+			</p>
+			<p>The techniques that were used to accomplish this included: parametric CAD (in Onshape), laser cutting, 3D printing, 3D CNC milling, stock parts, molding and casting, and interlocking parts. All parts were designed in the same Onshape document, which was iterated upon. The Onshape source parts are saved to the cloud and available for public viewing in my Onshape documents: <a href="https://cad.onshape.com/documents/25714f813495262b18fc9ffd/w/24abfab7dda9558c9c687741/e/9e647f96a40e0774c87a10a0">Page 1</a>, <a href="https://cad.onshape.com/documents/ead657d36cdd52e0eb21799b/w/3d173ef2c6a6379b20b612a9/e/076ad443ebc3d4e2a75e1640">Page 2</a>, and <a href="https://cad.onshape.com/documents/e83c0923411394810057205f/w/b48fd4a6010b56fe1c811258/e/a51d676e0bdb4f30527f5de8">Page 3</a>. Additional source files were exported from Onshape for processing in other software, such as Dremel Digilab for 3D printing, Autodesk Fusion 360 for CNC milling tool path creation, and Bantam tools for CNC milling. These files can be found in my <a href="https://github.com/mahsieh/hcde598e/tree/master/Assignment_SourceFiles/Final">Github repository</a>. 
+			</p>
+			<p><i>Ultimately, the project did not work as intended due to tolerancing issues that I thought I had accounted for, but 3D printing and toolpaths had other ideas for me.</i> <h4><b>‧º·(˚ ˃̣̣̥⌓˂̣̣̥ )‧º·˚</b></h4>
+			</p>
+			<p>Details of the how the project was accomplished are documented below.
+            </p>
+			<p>
+			<h3>Day 1: Design and Measurement</h3>
+			<p>After sourcing all of the materials that I planned on using for the project, I began to measure relevant thicknesses, diameters, lengths, and widths to use as variables within Onshape, so that if things needed to change, the values would be carried forward to all Parts where the values were used. I also began to design the tile pieces, gears, and wooden platform that would be fabricated in Onshape. I had to think about how I would be fastening the gears to the wooden frame and decided I would continue to use the plastic rivet stock parts and would drill holes through the platform and frame. Additionally, in order to fasten the tile pieces to the frame, they would need to be off-center from one another, which primarily affected the positioning of the holes.
 			</p>
 			<p>
-            <img src="ass00_02.png"></a>
+            <img src="ass08_02.png" width=450></a>
             </p>
+			<h3>Day 2: Laser Cutting, CNC Milling, and 3D Printing</h3>
+			<p>I finalized the design for the frame and felt ready to begin fabrication. I exported the top face of the wooden platform and the gears as .DXFs for laser cutting. These files were brought into Adobe Illustrator at original scale, where the gears were duplicated and arrayed to quickly cut multiple parts. The wooden platform needed no additional processing. I turned on the laser cutter following safety protocols, turning on the air assist and exhaust. I then placed the material on the laser bed (Delrin/Acetal for the gears, wood for the platform) and homed the laser to the top of the material. I initiated the print and set the material size in the Preferences to match. For the Delrin, I based my settings off of what Haihua and Joshua had used in week 4, but decreased the speed based on the additional thickness (Speed 6; Power 100; Frequency 100). For the wood, I followed the suggested settings from the MILL (Speed 3; Power 100; Frequency 100). The Delrin had some melting issues, which required some force to remove the gears from the rest of the material, but the cuts seemed smooth. No acommodations were made for the kerf, because I planned on using the additional removed material to account for potential tolerancing issues.
+			</p>
+			<img src="ass08_03.jpg" height=540></a>
+			
+			<p>I exported the tile piece to Fusion 360 as a step file based on the suggestion of Joshua, since the previous process of exporting to KiCAD would not work for geometry with multiple stepdowns (though I initially tried this using a .DXF). I generated toolpaths following a similar work process as Week 6, where I setup the model and then selected 3D adaptive clearing. I then used the post processor to generate the gcode file for use in Bantam Tools.
+			</p>
+			<p>
+			<img src="ass08_04.png" width=750></a>
+			</p>
+			<p>
+			I opened this file in Bantam, set the Bantam plan for the FR1 sandwich that I created, loaded the FR1 into the milling machine, changed the end mill to the 1/16" flat-end that I had chosen for the toolpaths, adjusted the number of toolpaths and locations to cut multiple tile pieces at a time, and then began milling. When the first sandwich finished, I measured the exterior edges of the each tile and found that they were properly sized, but measured the diameter of the counterbored hole and found it to be too small for the plastic rivet to fit. I asked Nadya about the process, since the dimensions that I had selected matched, but the cut was significantly less. She mentioned that it was possible that the adaptive clearing tool was a roughing toolpath and that it was expected to run a finishing toolpath. So instead of adaptive clearing, I ran a series of 2D toolpaths using pocket and contour to create the geometry. However, I didn't have time mill using this setting, so I saved it for the next time I would be in the MILL.
+			</p>
+			<p>
+			<img src="ass08_05a.png" width=650><img src="ass08_05.jpg" width=750></a><img src="ass08_06.jpg" width=750></a><img src="ass08_07.jpg" width=750></a>
+			</p>
+			<p>For the 3D print, I exported the frames as .STLs and loaded them into Dremel Digilab and adjusted the settings as seen below. I chose to try running the larger frame first in order to take advantage of running it over night. The frame just barely fit into the machine with a small brim, which was lucky. I left at this point, since the MILL was closing.
+			</p>
+			<p>
+			<img src="ass08_08a.png" width=900></a>
+			</p>
+			<h3>Day 3: CNC Milling and 3D Printing</h3>
+			<p>
+			I realized that the frame was too small, because I had done my math incorrectly for offsets based on the size of the tile pieces. So, even though I had 3D printed a piece of the frame, I had to revise the entire part (I also realized the holes were not required for the wooden platform, because I would orient the rivets upwards just like my tile pieces to give the same Z-direction offset) and added the same counterboring that was used on the tile pieces. I also ran the print for the other portion of the frame simultaneously after correcting its geometry as well, which was just location of the hole (I was able to take this piece with me as I left for the day, and it seemed good, with 4 tile pieces fitting along the interior edge).  
+			</p>
+			<p>
+			<img src="ass08_08.png" width=640></a><img src="ass08_09.png" width=640></a>
+			</p>
+			<p>For CNC milling, instead of adaptive clearing, I ran a series of 2D toolpaths using pocket and contour to create the geometry. I happily began milling with the same settings as previously and things were looking good, managing to finish a good number of pieces. However, when I got home, I realized that the pocket toolpath had a setting checked which left material, resulting in a strange counterboring which did not work for my rivets to completely enter the hole. This was quite disappointing to discover, but also a lesson to confirm the look of your CNC milled pieces before duplicating. I tried putting some tile pieces together anyway just to check the fitting with the gear installed, and movement + interlocking of the gears seemed to work reasonably well, though the pieces would torque away from each other.
+			</p>
+			<p>
+            <img src="ass08_10.png" width=628></a><img src="ass08_11.jpg" width=640></a>
+            </p>
+			<h3>Day 4: CNC Milling, Molding and Casting, and Manual Finishing</h3>
+			<p>
+			I decided to start with the upper portion of the tile pieces, which did not have the counterboring to ensure that I had some working pieces after CNC milling today. I ran these with two 2D contours, since there wasn't any special geometry (they probably could have been done in KiCAD as well, but already being used to the Fusion 360 process, stuck with it). These pieces DID come out properly. I switched to milling the bottom tile pieces ensuring that all my toolpaths were selected when exporting the gcode file. Things actually ran properly this time. However, the plastic rivets still did not fit flushly into the counterbored hole, but I thought I could manage, since it was my initial plan to have them stick out mildly so that the pieces would move smoothly over an unfinished wood surface. I assembled some tile pieces with the rivet and attached the gear as well, and tried using tacky glue to keep the upper and bottom halves of each tile from rotating. 
+			</p>
+			<p>
+			<img src="ass08_12.jpg" width=350></a>
+			</p>
+			
+			<p>I obtained the help of the MILL staff to use the bandsaw and cut my machineable wax from Assignment 6, in order to create another mold for the gears. After receiving training and certification on the machine, I loaded the .STL of the gear block into Fusion 360 and ran an adaptive clearing toolpath. Similar to the tile pieces, I loaded the wax using double-sided tape and began running the toolpath. After the milling finished, I noticed that the gear seemed slightly larger than the laser cuts pieces, which was probably due to using the 3D adaptive clearing, instead of 2D contours and pockets, which I could have done, given the lack of curvature in the gears). The pocket actually cleared too much and left only 3 sides for the silicone mold to be poured into, but I just put this edge up against the remaining machineable wax and held it in place using a heavy object (book). I left this mold to cure overnight and planned on demolding it the next day.
+			</p>
+			<img src="ass08_13a.png" width=640></a><img src="ass08_13.jpg" width=640></a>
+			<p>
+			I picked up the primary 3D printed frame. While the print itself was okay, I tried to place 4 tile pieces inside it, with the secondary frame sandwiching them, but discovered that the tile pieces did not fit, having maybe a 1.5-2mm overlap with the frame. This was confusing, as I had left a ~0.5mm gap in case milling of the tiles wasn't perfect. But I guess 3D printing had other plans for me and added additional materials to the interior edges (I actually ran into issues with both frames, where the brim was not easily removed from the pieces and had to be cut off). I didn't have the time to run another 3D print (not that I was even sure how to account for added material, whether it was some percentage of additional material, or a set value), so I decided to try to cut and sand away at the material to create an accurate fit. While this worked for the secondary frame and the bottom layer of the primary layer, I realized that it would be almost impossible to cut away at the second layer of the primary frame, since the PLA was firmly printed and the edge was too narrow for me to sand away at without wearing away at the first layer. More or less, I gave up on getting a nice tolerance and fit and worked on the manual technique of jamming things together and not worrying about actually being able to move the tile pieces. I assembled the "puzzle" by tacky gluing the frames to the wooden platform and began placing tiles into the frame. I also realized that the one of the rivets that went through the frame would obstruct tile pieces from being placed properly, something I might have realized if I had actual modeled the rivets and placed them in my assembly, rather than just taking their dimensions to design the holes, although some collisions are still hard to see in Onshape.
+			</p>
+			<p>
+			<img src="ass08_14.jpg" width=640></a>
+			</p>
+			<h3>Day 5: Casting</h3>
+			<p>
+			I demolded the silicone from the machineable wax and prepared plaster for casting. I poured two separate casts using an eye-balled ratio like the previous assignment. Things turned out...okay <b>╮( ꒪౪꒪)╭</b>.
+			</p>
+			<p>Although I had to recast a part after cracking one in the process of putting it into the final assembly. Plaster is not a particularly robust material, HEH.			
+			</p>
+			<h3>Reflection and Future Considerations</h3>
+			<p>There are a couple of items which I think could have been modified to make for a better final product.
+			<ul>
+				<li>Increase the diameter of the top of the counterbores so that the rivet could actually sit into the hole.</li>
+				<li>Rerun 3D prints with narrower interior dimensions to hopefully account for the additional material.</li>
+				<li>Properly inspect toolpaths and Bantam preview before feeling accomplished; ensure finishing toolpaths are used, not just roughing.</li>
+				<li>Add an additional frame layer so that pieces are locked in and can not twist out due to the torque the gears place on the tile piece. An additional benefit to this is that I could remove the backing wooden platform and move the pieces using the backside, whereas there currently isn't any place to hold or grip them as you try to move them (which is a bit painful).</li>
+				<li>Similarly, allowing for spacing/tolerance only works when the pieces are sandwiched between frame layers, since the offset I selected allowed the tile pieces to "squeeze" out on the edge where they were not covered by a frame.</li>
+				<li>If I had materials with the same thickness of the FR1 (or larger FR1), I could have milled each layer and then assembled them on top of each other (or laser cut it, if it was a non-metallic material).</li>
+				<li>If I did not increase the counterboring diameter, I could have created "tracks" in the puzzle bed for the rivet heads to run along, to avoid the additional z-offset, while also adding some additional securing/locking into the frame.</li>
+				<li>Use a better material for mechanisms involving force, rather than plaster.</li>
+			</ul>
+			<p><b>Overall: Aside from the problems I ran into during this project (which I somehow managed to avoid in the assignments leading up to it), I think...
+			</p>
+			<img src="ass08_jokes.jpeg" width=400></a>
+			<p>I got to learn some fun techniques and definitely would spend some free time in the makerspaces available when I'm not so busy (and sororities aren't rasterizing all the things). Time to find out if students not taking summer quarter, but are signed up for autumn, still have access...</b></p>
+			</p>
         </div>
         
     </body>
